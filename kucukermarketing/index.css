@@ -24,8 +24,8 @@
     --radius-sm:10px;
     --shadow:0 18px 40px -20px rgba(18,23,43,0.35);
     --shadow-sm:0 10px 22px -14px rgba(18,23,43,0.28);
-    --font-display:'Fraunces','Iowan Old Style',Georgia,serif;
-    --font-body:'Manrope','Segoe UI',system-ui,sans-serif;
+    --font-display:'Montserrat','Segoe UI',system-ui,sans-serif;
+    --font-body:'Montserrat','Segoe UI',system-ui,sans-serif;
     --font-mono:'IBM Plex Mono','SFMono-Regular',ui-monospace,monospace;
     --maxw:1220px;
     color-scheme:light;
