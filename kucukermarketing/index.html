@@ -69,7 +69,7 @@
         <p class="hero-lede">Ben jij een starter of groeiend bedrijf, en op zoek naar meer (potenti&euml;le) klanten? Ik help je graag!</p>
 
         <div class="hero-actions" style="justify-content:center;">
-          <a href="#diensten" class="btn btn-primary">Bekijk diensten</a>
+          <a href="#diensten" class="btn btn-primary" style="color:#000;">Bekijk diensten</a>
         </div>
 
         <div class="tag-strip">
@@ -119,8 +119,8 @@
   <section class="section section-alt" id="waarom">
     <div class="wrap">
       <div class="section-head">
-        <p class="eyebrow">Waarom samenwerken met mij</p>
-        <h2>Kwaliteit van een bureau, vrijheid van een freelancer.</h2>
+        <p class="eyebrow">Vrijheid van een freelance</p>
+        <h2>Kwaliteit van een bureau..</h2>
       </div>
       <div class="benefits-grid">
         <div class="benefit-card">
@@ -278,8 +278,8 @@
       <div class="combo-card">
         <p class="eyebrow">Alle 3 combineren?</p>
         <h2 style="font-size:clamp(1.6rem,4vw,2.1rem);margin-top:8px;">Social Media + Google Ads + Meta Ads</h2>
-        <div class="combo-old">&euro;553,- p.m.</div>
-        <div class="combo-new">&euro;498,- p.m.</div>
+        <div class="combo-old">&euro;553 <span class="pm">p.m.</span></div>
+        <div class="combo-new">&euro;498 <span class="pm">p.m.</span></div>
         <p class="combo-elsewhere">Tijdelijke aanbieding &mdash; elders al snel &euro;800,- voor dezelfde combinatie.</p>
         <p class="combo-note">Wil je ook af en toe een campagne in een andere taal, bijvoorbeeld Engels? Dat kan voor slechts &euro;50,- extra per maand.</p>
         <div class="hero-actions" style="justify-content:center;margin-top:24px;">
@@ -312,6 +312,17 @@
             <div class="field">
               <label for="phone">Telefoonnummer (optioneel)</label>
               <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="service">In welke dienst heb je interesse?</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Maak een keuze</option>
+                <option value="Social Media Beheer">Social Media Beheer</option>
+                <option value="Meta Ads">Meta Ads</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="SEO & Blogs">SEO & Blogs</option>
+                <option value="Weet ik nog niet / advies nodig">Weet ik nog niet / advies nodig</option>
+              </select>
             </div>
             <div class="field">
               <label for="message">Bericht</label>
@@ -522,6 +533,7 @@
         form.reportValidity();
         return;
       }
+      var service = form.service.value.trim();
       var name = form.name.value.trim();
       var email = form.email.value.trim();
       var phone = form.phone.value.trim();
@@ -531,6 +543,7 @@
       if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = "Versturen…"; }
 
       var payload = {
+        dienst: service,
         name: name,
         email: email,
         phone: phone || "(niet opgegeven)",
