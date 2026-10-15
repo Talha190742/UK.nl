@@ -7,9 +7,9 @@
     --ink-faint:#8A8FA3;
     --line:rgba(18,23,43,0.12);
     --line-strong:rgba(18,23,43,0.22);
-    --accent:#2451FF;
-    --accent-ink:#1638C7;
-    --accent-soft:#E4EAFF;
+    --accent:#6cb2ff;
+    --accent-ink:#6cb2ff;
+    --accent-soft:rgba(108,178,255,0.16);
     --amber:#FFB020;
     --amber-ink:#8A5A00;
     --amber-soft:#FFF3DC;
@@ -26,7 +26,7 @@
     --shadow-sm:0 10px 22px -14px rgba(18,23,43,0.28);
     --font-display:'Montserrat','Segoe UI',system-ui,sans-serif;
     --font-body:'Montserrat','Segoe UI',system-ui,sans-serif;
-    --font-mono:'IBM Plex Mono','SFMono-Regular',ui-monospace,monospace;
+    --font-mono:'Montserrat','Segoe UI',system-ui,sans-serif;
     --maxw:1220px;
     color-scheme:light;
   }
@@ -40,9 +40,9 @@
       --ink-faint:#7C81A0;
       --line:rgba(255,255,255,0.12);
       --line-strong:rgba(255,255,255,0.22);
-      --accent:#6E93FF;
-      --accent-ink:#C3D2FF;
-      --accent-soft:rgba(110,147,255,0.16);
+      --accent:#6cb2ff;
+      --accent-ink:#6cb2ff;
+      --accent-soft:rgba(108,178,255,0.16);
       --amber:#FFC661;
       --amber-ink:#FFD9A0;
       --amber-soft:rgba(255,198,97,0.14);
@@ -64,9 +64,9 @@
     --ink-faint:#7C81A0;
     --line:rgba(255,255,255,0.12);
     --line-strong:rgba(255,255,255,0.22);
-    --accent:#6E93FF;
-    --accent-ink:#C3D2FF;
-    --accent-soft:rgba(110,147,255,0.16);
+    --accent:#6cb2ff;
+    --accent-ink:#6cb2ff;
+    --accent-soft:rgba(108,178,255,0.16);
     --amber:#FFC661;
     --amber-ink:#FFD9A0;
     --amber-soft:rgba(255,198,97,0.14);
