@@ -293,6 +293,40 @@
   .faq-item[open] summary .plus::after{opacity:0;}
   .faq-body{padding:0 22px 20px;color:var(--ink-soft);font-size:0.96rem;}
 
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;gap:24px;max-width:960px;margin-inline:auto;}
+  @media (min-width:800px){.contact-grid{grid-template-columns:1.2fr 1fr;align-items:start;}}
+  .form-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-sm);text-align:left;}
+  .form-title{font-size:1.3rem;margin-bottom:18px;}
+  .field{margin-bottom:16px;display:flex;flex-direction:column;gap:7px;}
+  .field label{font-weight:700;font-size:0.86rem;}
+  .field input,.field textarea{
+    font-family:var(--font-body);font-size:1rem;padding:12px 14px;border-radius:var(--radius-sm);
+    border:1.5px solid var(--line-strong);background:var(--bg);color:var(--ink);
+  }
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+  .field textarea{resize:vertical;min-height:110px;}
+  .form-note{font-size:0.82rem;color:var(--ink-faint);margin-top:12px;text-align:center;}
+  .form-note a{color:var(--accent-ink);text-decoration:underline;}
+  .success-box{display:none;text-align:center;padding:30px 16px;border:1.5px dashed var(--accent);border-radius:var(--radius);background:var(--accent-soft);}
+  .success-box.show{display:block;}
+  .success-box svg{width:36px;height:36px;color:var(--accent-ink);margin-bottom:10px;}
+  .success-box h3{font-size:1.1rem;margin-bottom:6px;font-family:var(--font-body);font-weight:800;}
+  .success-box p{color:var(--ink-soft);font-size:0.94rem;}
+  .success-box .btn{margin-top:14px;}
+  .contact-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:10px 24px;box-shadow:var(--shadow-sm);}
+  .contact-row{display:flex;gap:14px;padding-block:16px;border-bottom:1px solid var(--line);align-items:flex-start;text-align:left;}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-row .icon-wrap{
+    width:40px;height:40px;border-radius:11px;background:var(--surface-2);display:flex;align-items:center;
+    justify-content:center;flex:none;color:var(--accent-ink);
+  }
+  .contact-row .icon-wrap svg{width:19px;height:19px;}
+  .contact-row h4{font-size:0.95rem;margin-bottom:3px;font-family:var(--font-body);font-weight:800;}
+  .contact-row p{color:var(--ink-soft);font-size:0.92rem;}
+  .contact-row a{color:inherit;text-decoration:none;}
+  .contact-row a:hover{text-decoration:underline;}
+
   /* ---------- Footer ---------- */
   .site-footer{background:var(--ink);color:var(--bg);padding-block:34px 22px;}
   .footer-inner{display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;}
@@ -331,7 +365,7 @@
 
   .price-line{display:flex;align-items:baseline;gap:10px;margin-top:4px;flex-wrap:wrap;}
   .price-line .now{font-family:var(--font-mono);font-size:1.5rem;font-weight:800;color:var(--accent-ink);}
-  .price-line .was{font-family:var(--font-mono);font-size:1rem;color:var(--ink-faint);}
+  .price-line .was{font-family:var(--font-mono);font-size:1rem;color:var(--ink-faint);text-decoration:line-through;}
   .combo-card{
     background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius-lg);
     padding:36px 32px;text-align:center;box-shadow:var(--shadow);
