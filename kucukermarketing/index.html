@@ -311,12 +311,11 @@
       </div>
       <div class="section-head">
         <p class="eyebrow">Contact</p>
-        <h2 style="font-size:clamp(1.6rem,3.4vw,2.2rem);">Ready voor online groei & meer klanten?</h2>
+        <h2 style="font-size:clamp(1.6rem,3.4vw,2.2rem);">Ready voor online groei &amp; meer klanten?</h2>
         <p style="font-size:0.95rem;">Vul het formulier in. Je ontvangt vaak binnen 30 minuten al een reactie.</p>
       </div>
       <div class="contact-grid">
         <div class="form-card">
-          <h3 class="form-title">Stuur een bericht</h3>
           <form id="contactForm" novalidate>
             <div class="field">
               <label for="name">Naam</label>
@@ -328,7 +327,7 @@
             </div>
             <div class="field">
               <label for="phone">Telefoonnummer</label>
-              <input type="tel" id="phone" name="phone" autocomplete="tel">
+              <input type="tel" id="phone" name="phone" required autocomplete="tel">
             </div>
             <div class="field">
               <label>In welke dienst heb je interesse? <span style="font-weight:500;color:var(--ink-faint);">(meerdere mogelijk)</span></label>
@@ -337,12 +336,13 @@
                 <label class="service-check"><input type="checkbox" name="service" value="Meta Ads"><span>Meta Ads</span></label>
                 <label class="service-check"><input type="checkbox" name="service" value="Google Ads"><span>Google Ads</span></label>
                 <label class="service-check"><input type="checkbox" name="service" value="SEO & Blogs"><span>SEO & Blogs</span></label>
+                <label class="service-check"><input type="checkbox" name="service" value="Combideal van 3 diensten"><span>Combideal van 3 diensten</span></label>
                 <label class="service-check"><input type="checkbox" name="service" value="Weet ik nog niet / advies nodig"><span>Weet ik nog niet / advies nodig</span></label>
               </div>
             </div>
             <div class="field">
               <label for="message">Bericht (optioneel)</label>
-              <textarea id="message" name="message" required></textarea>
+              <textarea id="message" name="message"></textarea>
             </div>
             <p class="form-note" id="formError" hidden>Er ging iets mis bij het versturen. Probeer het nog eens, of stuur een appje via de knop hierboven.</p>
             <button type="submit" class="btn btn-primary btn-block" id="submitBtn" style="color:#000;">Verstuur bericht</button>
