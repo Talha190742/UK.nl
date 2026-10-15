@@ -203,7 +203,7 @@
   }
   .save-badge{
     position:absolute;top:20px;right:20px;
-    background:#00f7fe;color:#6B7280;font-family:var(--font-mono);font-weight:700;
+    background:#00f7fe;color:#2E333D;font-family:var(--font-mono);font-weight:700;
     font-size:0.72rem;letter-spacing:0.02em;padding:6px 12px;border-radius:999px;white-space:nowrap;
   }
   .price-line .pm{font-size:0.62em;font-weight:600;margin-left:-4px;}
