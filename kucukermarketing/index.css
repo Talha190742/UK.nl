@@ -207,6 +207,7 @@
     font-size:0.72rem;letter-spacing:0.02em;padding:6px 12px;border-radius:999px;white-space:nowrap;
   }
   .price-line .pm{font-size:0.62em;font-weight:600;}
+  .promo-note{font-size:0.78rem;color:var(--ink-faint);margin-bottom:-6px;}
   .service-card .benefit-icon{background:var(--amber-soft);color:var(--amber-ink);}
   .service-card h3{font-size:1.24rem;}
   .service-card p{color:var(--ink-soft);font-size:0.96rem;}
