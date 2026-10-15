@@ -314,15 +314,14 @@
               <input type="tel" id="phone" name="phone" autocomplete="tel">
             </div>
             <div class="field">
-              <label for="service">In welke dienst heb je interesse?</label>
-              <select id="service" name="service" required>
-                <option value="" disabled selected>Maak een keuze</option>
-                <option value="Social Media Beheer">Social Media Beheer</option>
-                <option value="Meta Ads">Meta Ads</option>
-                <option value="Google Ads">Google Ads</option>
-                <option value="SEO & Blogs">SEO & Blogs</option>
-                <option value="Weet ik nog niet / advies nodig">Weet ik nog niet / advies nodig</option>
-              </select>
+              <label>In welke dienst heb je interesse? <span style="font-weight:500;color:var(--ink-faint);">(meerdere mogelijk)</span></label>
+              <div class="service-checks">
+                <label class="service-check"><input type="checkbox" name="service" value="Social Media Beheer"><span>Social Media Beheer</span></label>
+                <label class="service-check"><input type="checkbox" name="service" value="Meta Ads"><span>Meta Ads</span></label>
+                <label class="service-check"><input type="checkbox" name="service" value="Google Ads"><span>Google Ads</span></label>
+                <label class="service-check"><input type="checkbox" name="service" value="SEO & Blogs"><span>SEO & Blogs</span></label>
+                <label class="service-check"><input type="checkbox" name="service" value="Weet ik nog niet / advies nodig"><span>Weet ik nog niet / advies nodig</span></label>
+              </div>
             </div>
             <div class="field">
               <label for="message">Bericht</label>
@@ -533,7 +532,8 @@
         form.reportValidity();
         return;
       }
-      var service = form.service.value.trim();
+      var service = Array.prototype.filter.call(form.service, function(cb){ return cb.checked; })
+        .map(function(cb){ return cb.value; }).join(", ") || "(niet opgegeven)";
       var name = form.name.value.trim();
       var email = form.email.value.trim();
       var phone = form.phone.value.trim();
