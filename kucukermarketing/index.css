@@ -340,7 +340,7 @@
   .service-check input[type="checkbox"]{
     width:18px;height:18px;flex:none;accent-color:var(--accent);cursor:pointer;margin:0;
   }
-  .service-check span{font-size:0.95rem;color:var(--ink);}
+  .service-check span{font-size:0.95rem;color:var(--ink);font-family:"IBM Plex Mono",monospace;}
   .form-note{font-size:0.82rem;color:var(--ink-faint);margin-top:12px;text-align:center;}
   .form-note a{color:var(--accent-ink);text-decoration:underline;}
   .success-box{display:none;text-align:center;padding:30px 16px;border:1.5px dashed var(--accent);border-radius:var(--radius);background:var(--accent-soft);}
