@@ -333,7 +333,7 @@
   .service-checks{display:flex;flex-direction:column;gap:2px;}
   .service-check{
     display:flex;align-items:center;gap:11px;padding:12px 14px;border-radius:var(--radius-sm);
-    border:1.5px solid var(--line-strong);background:var(--bg);cursor:pointer;font-weight:500;
+    border:1.5px solid var(--line-strong);background:var(--bg);cursor:pointer;font-weight:400;
     transition:border-color .15s ease, background .15s ease;
   }
   .service-check:has(input:checked){border-color:var(--accent);background:var(--accent-soft);}
@@ -414,3 +414,13 @@
   .combo-new .pm{font-size:0.5em;font-weight:600;margin-left:-4px;}
   .combo-elsewhere{font-size:0.9rem;color:var(--ink-faint);margin-top:4px;}
   .combo-note{margin-top:18px;font-size:0.95rem;color:var(--ink-soft);}
+
+  /* ---------- Klantlogo's marquee ---------- */
+  .logo-marquee{overflow:hidden;padding-block:32px;background:var(--surface);border-block:1px solid var(--line);}
+  .logo-marquee-track{display:flex;align-items:center;gap:26px;width:max-content;animation:logoMarqueeScroll 42s linear infinite;will-change:transform;}
+  .logo-chip{
+    flex:none;display:flex;align-items:center;justify-content:center;
+    background:#fff;border-radius:12px;padding:10px 20px;height:52px;box-shadow:var(--shadow-sm);
+  }
+  .logo-chip img{max-height:32px;max-width:120px;width:auto;height:auto;object-fit:contain;display:block;}
+  @keyframes logoMarqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
