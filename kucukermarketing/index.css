@@ -415,4 +415,4 @@
     background:#fff;border:1.5px solid var(--accent);border-radius:12px;padding:10px 20px;height:52px;box-shadow:var(--shadow-sm);
   }
   .logo-chip img{max-height:32px;max-width:120px;width:auto;height:auto;object-fit:contain;display:block;}
-  @keyframes logoMarqueeScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @keyframes logoMarqueeScroll{from{transform:translateX(0);}to{transform:translateX(var(--marquee-shift, -50%));}}
