@@ -223,3 +223,65 @@
     });
   }
 })();
+
+(function(){
+  "use strict";
+  /* De logo-marquee duplicate zijn chips exact 2x zodat de animatie naadloos
+     kan loopen. Op sommige mobiele browsers (vooral iOS Safari) geeft een
+     percentage-gebaseerde transform (-50%) een zichtbare "sprong" doordat de
+     breedteberekening net anders afrondt dan de layout. Daarom meten we de
+     exacte pixelbreedte van de eerste helft en zetten die als CSS-variabele,
+     zodat de animatie altijd exact op de juiste pixel eindigt. */
+  var track = document.querySelector(".logo-marquee-track");
+  if(!track) return;
+
+  function applyShift(){
+    var chips = track.querySelectorAll(".logo-chip");
+    var half = Math.floor(chips.length / 2);
+    if(half < 1) return;
+    var firstChipOfSecondHalf = chips[half];
+    if(!firstChipOfSecondHalf) return;
+    /* offsetLeft is de positie volgens de normale layout, dus onafhankelijk
+       van een eventuele lopende transform-animatie op dit element. */
+    var shift = firstChipOfSecondHalf.offsetLeft - track.offsetLeft;
+    if(shift > 0){
+      track.style.setProperty("--marquee-shift", "-" + Math.round(shift) + "px");
+    }
+  }
+
+  function scheduleApply(){
+    /* Dubbele rAF zodat layout/afbeeldingen zeker geladen/berekend zijn. */
+    requestAnimationFrame(function(){
+      requestAnimationFrame(applyShift);
+    });
+  }
+
+  var imgs = track.querySelectorAll("img");
+  var pending = imgs.length;
+  if(pending === 0){
+    scheduleApply();
+  } else {
+    imgs.forEach(function(img){
+      if(img.complete){
+        pending--;
+      } else {
+        img.addEventListener("load", onImgDone);
+        img.addEventListener("error", onImgDone);
+      }
+    });
+    if(pending <= 0){ scheduleApply(); }
+  }
+  function onImgDone(){
+    pending--;
+    if(pending <= 0){ scheduleApply(); }
+  }
+
+  var resizeTimer;
+  window.addEventListener("resize", function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(applyShift, 200);
+  });
+
+  /* Val-back: sowieso na volledige page-load nog eenmaal herberekenen. */
+  window.addEventListener("load", scheduleApply);
+})();
