@@ -1,4 +1,4 @@
-  :root{
+:root{
     --bg:#F5F6F8;
     --surface:#FFFFFF;
     --surface-2:#E8EAEF;
@@ -356,7 +356,7 @@
   .field textarea{resize:vertical;min-height:120px;}
   .form-note{font-size:0.82rem;color:var(--ink-faint);margin-top:4px;}
   .form-note a{color:var(--accent-ink);text-decoration:underline;}
-  .success-box{display:none;text-align:center;padding:38px 20px;border:1.5px dashed var(--accent);border-radius:var(--radius);background:var(--accent-soft);}
+  .success-box{display:none;text-align:center;padding:38px 20px;border:0.5px dashed var(--accent);border-radius:var(--radius);background:var(--accent-soft);}
   .success-box.show{display:block;}
   .success-box svg{width:40px;height:40px;color:var(--accent-ink);margin-bottom:12px;}
   .success-box h3{font-size:1.2rem;margin-bottom:8px;font-family:var(--font-body);font-weight:800;}
@@ -411,21 +411,32 @@
 
   html{scroll-behavior:smooth;}
   section[id]{scroll-margin-top:84px;}
-
-  /* ---------- Added: hero-solo, pricing, combo-card ---------- */
+  .nav-link.active{color:var(--ink);background:var(--surface-2);}
+  .logo-photo{width:40px;height:40px;border-radius:50%;object-fit:cover;flex:none;box-shadow:var(--shadow-sm);}
+  .footer-logo .logo-photo{box-shadow:none;border:2px solid rgba(255,255,255,0.18);}
   .hero-solo .wrap{display:block;max-width:760px;text-align:center;}
   .hero-solo .hero-actions{justify-content:center;flex-direction:column;align-items:center;}
   .hero-solo .tag-strip{justify-content:center;}
   .hero-solo .hero-lede{margin-inline:auto;}
+  .wa-note{margin-top:10px;font-size:0.84rem;color:var(--ink-faint);display:flex;align-items:center;gap:6px;justify-content:center;}
+  .wa-note svg{width:14px;height:14px;color:var(--accent);}
+  .pill-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px;}
+  .pill-nav a{
+    display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;
+    border:1.5px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);
+    font-weight:700;font-size:0.9rem;text-decoration:none;transition:border-color .15s ease, color .15s ease;
+  }
+  .pill-nav a:hover{border-color:var(--accent);color:var(--ink);}
   .price-line{display:flex;align-items:baseline;gap:10px;margin-top:4px;flex-wrap:wrap;}
   .price-line .now{font-family:var(--font-mono);font-size:1.5rem;font-weight:800;color:var(--accent-ink);}
   .price-line .was{font-family:var(--font-mono);font-size:1rem;color:var(--ink-faint);}
+  .price-line .elsewhere{font-size:0.82rem;color:var(--ink-faint);}
   .combo-card{
-    background:var(--surface);border:2px solid var(--accent);border-radius:var(--radius-lg);
+    background:var(--surface);border:0.5px solid var(--accent);border-radius:var(--radius-lg);
     padding:36px 32px;text-align:center;box-shadow:var(--shadow);
   }
   .combo-card .eyebrow{justify-content:center;}
   .combo-old{font-family:var(--font-mono);font-size:1.2rem;color:var(--ink-faint);text-decoration:line-through;margin-top:16px;}
   .combo-new{font-family:var(--font-mono);font-size:2.6rem;font-weight:800;color:var(--accent-ink);margin-top:2px;}
-  .combo-elsewhere{font-size:0.9rem;color:var(--ink-faint);margin-top:4px;}
+  .combo-elsewhere{font-size:0.9rem;color:var(--accent);margin-top:4px;}
   .combo-note{margin-top:18px;font-size:0.95rem;color:var(--ink-soft);}
