@@ -167,7 +167,7 @@
   @media (min-width:760px){
     .hero-solo .wrap{max-width:980px;}
     .hero-split{
-      display:grid;grid-template-columns:1.3fr 0.7fr;column-gap:48px;align-items:center;text-align:left;
+      display:grid;grid-template-columns:1.05fr 0.95fr;column-gap:40px;align-items:center;text-align:left;
       grid-template-areas:
         "eyebrow avatar"
         "h1 avatar"
@@ -179,9 +179,9 @@
     .hero-split h1{grid-area:h1;}
     .hero-split .hero-lede{grid-area:lede;margin-inline:0;}
     .hero-split .hero-actions{grid-area:actions;justify-content:flex-start;}
-    .hero-split .hero-avatar{grid-area:avatar;margin-top:0;align-self:center;}
+    .hero-split .hero-avatar{grid-area:avatar;margin-top:0;align-self:center;justify-self:center;}
     .hero-split .hero-avatar img{
-      width:100%;aspect-ratio:1/1;max-height:420px;object-fit:cover;
+      width:clamp(290px,40vw,400px);height:clamp(290px,40vw,400px);object-fit:cover;
       border-radius:36px;
     }
     .hero-split .tag-strip{grid-area:tagstrip;display:grid;grid-template-columns:repeat(2,max-content);justify-content:start;gap:10px 14px;}
