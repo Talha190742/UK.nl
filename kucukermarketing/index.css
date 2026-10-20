@@ -129,6 +129,14 @@
      wisselt tussen twee blauwtinten zodat je ziet dat het aparte secties zijn;
      de kaart erin is dan weer een stap lichter dan zijn eigen sectie. */
   #belang-online-marketing{background:var(--bg);}
+  #belang-online-marketing .section-head p{margin-top:32px;}
+  .belang-split{align-items:center;}
+  .belang-copy.section-head{text-align:left;max-width:none;margin-inline:0;margin-bottom:0;}
+  .belang-media{display:flex;}
+  .belang-media img{
+    width:100%;max-height:440px;object-fit:cover;border-radius:var(--radius-lg);
+    border:0.5px solid var(--accent);box-shadow:var(--shadow-sm);
+  }
   #diensten{background:#0B0E1A;}
   #diensten .section-head h2{color:#fff;}
   #diensten .section-head .eyebrow{color:#2591fb;}
@@ -193,12 +201,12 @@
   .service-card h3{font-size:1.24rem;color:#fff;}
   .service-card p{color:#B6BDD4;font-size:0.88rem;}
   .service-card .service-sublabel{color:#fff;}
-  .service-card .promo-note{color:#B6BDD4;}
+  .service-card .promo-note{color:#B6BDD4;font-size:0.72rem;}
   .service-list{display:flex;flex-direction:column;gap:4px;margin-top:2px;}
   .service-list li{display:flex;gap:9px;font-size:0.85rem;color:var(--ink-soft);align-items:flex-start;}
   .service-card .service-list li{color:#B6BDD4;}
   .service-list svg{width:16px;height:16px;color:var(--accent);flex:none;margin-top:3px;}
-  .service-card .btn{margin-top:24px;align-self:flex-start;padding:10px 18px;font-size:0.85rem;}
+  .service-card .btn{margin-top:14px;align-self:flex-start;padding:10px 18px;font-size:0.85rem;}
   .service-card .price-line .was{color:#B6BDD4;}
   .service-card .price-line .was::after{background:#B6BDD4;}
   .service-card .faq-item{background:#161B28;border-color:rgba(242,244,250,0.14);border-width:0.5px;}
@@ -333,6 +341,7 @@
   }
   .service-check span{font-size:0.95rem;color:var(--ink);}
   .form-note{font-size:0.82rem;color:var(--ink-faint);margin-top:12px;text-align:center;}
+  #submitBtn{margin-top:10px;}
   .form-note a{color:var(--accent-ink);text-decoration:underline;}
   .success-box{display:none;text-align:center;padding:30px 16px;border:0.5px dashed var(--accent);border-radius:var(--radius);background:var(--accent-soft);}
   .success-box.show{display:block;}
@@ -405,11 +414,11 @@
   .combo-old .pm{font-size:0.72em;font-weight:500;margin-left:5px;}
   .combo-new{font-family:var(--font-mono);font-size:2.6rem;font-weight:700;color:var(--accent-ink);margin-top:2px;}
   .combo-new .pm{font-size:0.5em;font-weight:600;margin-left:-4px;}
-  .combo-elsewhere{font-size:0.9rem;color:var(--accent);margin-top:4px;}
+  .combo-elsewhere{font-size:0.9rem;color:var(--accent);margin-top:4px;font-weight:600;}
   .combo-note{margin-top:18px;font-size:0.95rem;color:var(--ink-soft);}
 
   /* ---------- Klantlogo's marquee ---------- */
-  .logo-marquee{overflow:hidden;padding-block:32px;background:var(--surface-3);border-block:1px solid var(--line);}
+  .logo-marquee{overflow:hidden;padding-block:32px;background:#fff;border-block:1px solid var(--line);}
   .logo-marquee-track{display:flex;align-items:center;gap:26px;width:max-content;animation:logoMarqueeScroll 42s linear infinite;will-change:transform;}
   .logo-chip{
     flex:none;display:flex;align-items:center;justify-content:center;
