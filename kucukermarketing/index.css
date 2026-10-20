@@ -164,6 +164,25 @@
     width:130px;height:130px;border-radius:50%;object-fit:cover;
     border:0.5px solid var(--accent);box-shadow:var(--shadow-sm);
   }
+  @media (min-width:900px){
+    .hero-solo .wrap{max-width:980px;}
+    .hero-split{
+      display:grid;grid-template-columns:1.3fr 0.7fr;column-gap:48px;align-items:center;text-align:left;
+      grid-template-areas:
+        "eyebrow avatar"
+        "h1 avatar"
+        "lede avatar"
+        "actions avatar"
+        "tagstrip avatar";
+    }
+    .hero-split .eyebrow{grid-area:eyebrow;}
+    .hero-split h1{grid-area:h1;}
+    .hero-split .hero-lede{grid-area:lede;margin-inline:0;}
+    .hero-split .hero-actions{grid-area:actions;justify-content:flex-start;}
+    .hero-split .hero-avatar{grid-area:avatar;margin-top:0;justify-content:center;}
+    .hero-split .hero-avatar img{width:200px;height:200px;}
+    .hero-split .tag-strip{grid-area:tagstrip;justify-content:flex-start;}
+  }
   .tag-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px;padding-top:30px;border-top:1px dashed var(--line-strong);}
   .tag-chip{
     display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border:1px solid var(--line);
