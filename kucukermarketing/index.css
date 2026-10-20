@@ -131,7 +131,8 @@
   #belang-online-marketing{background:var(--bg);}
   #belang-online-marketing .section-head p{margin-top:32px;}
   .belang-split{align-items:center;}
-  .belang-copy.section-head{text-align:left;max-width:none;margin-inline:0;margin-bottom:0;}
+  .belang-copy.section-head{margin-bottom:0;}
+  @media (min-width:900px){.belang-copy.section-head{text-align:left;max-width:none;margin-inline:0;}}
   .belang-media{display:flex;}
   .belang-media img{
     width:100%;max-height:440px;object-fit:cover;border-radius:var(--radius-lg);
