@@ -102,7 +102,7 @@
     transition:background-color 0.15s ease;
   }
   @media (min-width:760px){
-    .nav{display:flex;}
+    .nav{display:flex;justify-self:end;margin-right:20px;}
     .menu-toggle{display:none;}
   }
   .mobile-panel{
