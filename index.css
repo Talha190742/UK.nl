@@ -76,11 +76,14 @@
   /* ---------- Topbalk met voordelen (swipebaar) ---------- */
   .announce-bar{background:var(--ink);padding-block:7px;}
   .announce-track{
-    display:flex;align-items:center;gap:12px;white-space:nowrap;
+    display:flex;align-items:center;justify-content:flex-start;gap:12px;white-space:nowrap;
     overflow-x:auto;padding-inline:20px;scrollbar-width:none;-ms-overflow-style:none;
     -webkit-overflow-scrolling:touch;
   }
   .announce-track::-webkit-scrollbar{display:none;}
+  @media (min-width:760px){
+    .announce-track{justify-content:center;}
+  }
   .announce-item{font-size:0.72rem;font-weight:400;color:#fff;}
   .announce-sep{opacity:0.5;font-size:0.72rem;color:#fff;}
 
