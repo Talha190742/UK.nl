@@ -13,12 +13,16 @@
 
   var menuToggle = document.getElementById("menuToggle");
   var mobilePanel = document.getElementById("mobilePanel");
+  var mobilePanelClose = document.getElementById("mobilePanelClose");
+  var mobilePanelBackdrop = document.getElementById("mobilePanelBackdrop");
   var iconMenu = document.getElementById("iconMenu");
   var iconClose = document.getElementById("iconClose");
 
   function closeMobileMenu(){
     if(!mobilePanel) return;
     mobilePanel.classList.remove("open");
+    if(mobilePanelBackdrop) mobilePanelBackdrop.classList.remove("open");
+    document.documentElement.classList.remove("menu-open");
     if(menuToggle) menuToggle.setAttribute("aria-expanded","false");
     setSvgHidden(iconMenu, false);
     setSvgHidden(iconClose, true);
@@ -27,11 +31,22 @@
   if(menuToggle){
     menuToggle.addEventListener("click", function(){
       var open = mobilePanel.classList.toggle("open");
+      if(mobilePanelBackdrop) mobilePanelBackdrop.classList.toggle("open", open);
+      document.documentElement.classList.toggle("menu-open", open);
       menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
       setSvgHidden(iconMenu, open);
       setSvgHidden(iconClose, !open);
     });
   }
+  if(mobilePanelClose){
+    mobilePanelClose.addEventListener("click", closeMobileMenu);
+  }
+  if(mobilePanelBackdrop){
+    mobilePanelBackdrop.addEventListener("click", closeMobileMenu);
+  }
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") closeMobileMenu();
+  });
 
   /* ---------- Eigen smooth-scroll voor interne links (#...) ----------
      We animeren zelf met requestAnimationFrame in plaats van te vertrouwen
@@ -110,7 +125,7 @@
   function onScroll(){
     if(suppressSpy) return;
     var pos = window.scrollY + 110;
-    var current = null;
+    var current = "home";
     sections.forEach(function(sec){
       if(sec.offsetTop <= pos) current = sec.id;
     });
@@ -130,7 +145,7 @@
       if(hash === "#top"){
         e.preventDefault();
         suppressSpy = true;
-        setActiveNav(null);
+        setActiveNav("home");
         animateScrollTo(0, function(){ suppressSpy = false; onScroll(); });
         history.pushState(null, "", "#top");
         return;
@@ -140,16 +155,30 @@
       e.preventDefault();
       suppressSpy = true;
       setActiveNav(target.id);
-      var targetY = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-      /* Als het mobiele menu nog dichtklapt, geeft dat een layout-shift;
-         we wachten die ene frame uit zodat de eindpositie klopt. */
-      if(isOpen){
-        requestAnimationFrame(function(){
-          var fixedY = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-          animateScrollTo(fixedY, function(){ suppressSpy = false; onScroll(); });
+      function runScroll(){
+        var y = target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+        animateScrollTo(y, function(){
+          /* Extra correctie na een korte wachttijd: als een lazy-loaded
+             afbeelding boven de sectie intussen is ingeladen (bijv. bij een
+             trage verbinding of vlak na het openen van de site) en de pagina
+             daardoor van hoogte is veranderd, springen we in één keer naar
+             de echte eindpositie i.p.v. er net naast te blijven staan. */
+          setTimeout(function(){
+            var fixedY = Math.max(0, target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET);
+            if(Math.abs(window.scrollY - fixedY) > 3){
+              window.scrollTo({top: fixedY, left: 0, behavior: "auto"});
+            }
+            suppressSpy = false;
+            onScroll();
+          }, 150);
         });
+      }
+      /* Als het mobiele menu nog dichtklapt, geeft dat een layout-shift;
+         we wachten die ene frame uit zodat de startpositie al klopt. */
+      if(isOpen){
+        requestAnimationFrame(runScroll);
       } else {
-        animateScrollTo(targetY, function(){ suppressSpy = false; onScroll(); });
+        runScroll();
       }
       history.pushState(null, "", hash);
     });
