@@ -74,7 +74,7 @@
   }
 
   /* ---------- Topbalk met voordelen (swipebaar) ---------- */
-  .announce-bar{background:var(--ink);padding-block:7px;}
+  .announce-bar{background:#353c42;padding-block:7px;}
   .announce-track{
     display:flex;align-items:center;justify-content:flex-start;gap:12px;white-space:nowrap;
     overflow-x:auto;padding-inline:20px;scrollbar-width:none;-ms-overflow-style:none;
@@ -94,6 +94,9 @@
     border-bottom:1px solid var(--line);
   }
   .header-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding-block:14px;}
+  @media (max-width:759.98px){
+    .header-row{padding-inline:12px;}
+  }
   .logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none;}
   .logo-mark{
     width:40px;height:40px;border-radius:11px;background:var(--ink);color:var(--bg);flex:none;
@@ -109,7 +112,7 @@
   .nav-link:hover{color:var(--ink);background:var(--surface-2);}
   .nav-link:active{color:#fff;background:var(--accent);}
   .nav-link[aria-current="page"]{color:#fff;background:var(--accent);}
-  .header-actions{display:flex;align-items:center;gap:10px;justify-self:end;}
+  .header-actions{display:flex;align-items:center;gap:10px;justify-self:end;grid-column:3;}
   .menu-toggle{
     display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
     border:0;background:transparent;color:var(--ink);cursor:pointer;flex:none;
@@ -173,6 +176,7 @@
   #belang-online-marketing .section-head p{margin-top:32px;}
   .belang-split{align-items:center;}
   .belang-copy.section-head{margin-bottom:0;}
+  .belang-copy p:not(.eyebrow){color:var(--ink);}
   @media (min-width:900px){.belang-copy.section-head{text-align:left;max-width:none;margin-inline:0;}}
   .belang-media{display:flex;}
   .belang-media img{
@@ -195,14 +199,19 @@
   @media (min-width:960px){.hero .wrap{grid-template-columns:1.05fr 0.95fr;gap:48px;}}
   .hero h1{font-size:clamp(2.5rem,6vw,3.9rem);}
   .hero-lede{margin-top:20px;font-size:1.02rem;color:var(--ink);max-width:48ch;}
+  .mobile-break{display:none;}
+  @media (max-width:759.98px){
+    .mobile-break{display:inline;}
+    .hero-solo .hero-lede{font-size:0.92rem;}
+  }
   .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;}
   .hero-solo .wrap{display:block;max-width:760px;margin-inline:auto;text-align:center;}
   .hero-solo .hero-actions{justify-content:center;}
   .hero-solo .tag-strip{justify-content:center;}
   .hero-solo .hero-lede{margin-inline:auto;}
-  .hero-avatar{display:flex;justify-content:center;margin-top:30px;}
+  .hero-avatar{display:flex;justify-content:center;margin-top:46px;}
   .hero-avatar img{
-    width:min(82vw,320px);height:min(82vw,320px);border-radius:var(--radius-lg);object-fit:cover;
+    width:100%;max-height:440px;aspect-ratio:1033/1200;border-radius:var(--radius-lg);object-fit:cover;
     border:0.5px solid var(--accent);box-shadow:var(--shadow-sm);
   }
   @media (min-width:760px){
@@ -226,6 +235,13 @@
       border-radius:36px;
     }
     .hero-split .tag-strip{grid-area:tagstrip;display:grid;grid-template-columns:repeat(2,max-content);justify-content:start;gap:10px 14px;}
+  }
+  @media (max-width:759.98px){
+    .section-head{text-align:left;margin-inline:0;}
+    .hero-solo .wrap{text-align:left;margin-inline:0;}
+    .hero-solo .hero-actions{justify-content:flex-start;}
+    .hero-solo .tag-strip{justify-content:flex-start;}
+    .hero-solo .hero-lede{margin-inline:0;}
   }
   .tag-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px;padding-top:30px;border-top:1px dashed var(--line-strong);}
   .tag-chip{
@@ -295,7 +311,7 @@
   }
   .mini-quote-row.is-left .mini-quote{transform:rotate(-1.5deg);}
   .mini-quote-row.is-right .mini-quote{transform:rotate(1.5deg);}
-  .mini-quote::before{content:"\201C";flex:none;color:var(--accent);font-family:var(--font-display);font-size:1.3em;font-style:normal;font-weight:800;line-height:0.6;}
+  .mini-quote::before{content:"“";flex:none;color:var(--accent);font-family:var(--font-display);font-size:1.3em;font-style:normal;font-weight:800;line-height:0.6;}
   .mini-quote strong{color:inherit;font-weight:700;font-style:normal;}
 
   .tiles-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
