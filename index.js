@@ -102,7 +102,7 @@
     requestAnimationFrame(step);
   }
 
-  var DIENSTEN_IDS = ["diensten","socialmedia","meta-ads","google-ads","seo-blogs"];
+  var TARIEVEN_IDS = ["socialmedia","meta-ads","google-ads","seo-blogs"];
   var sections = ["diensten","waarom","socialmedia","meta-ads","google-ads","seo-blogs","combideal","contact"]
     .map(function(id){ return document.getElementById(id); }).filter(Boolean);
   var navLinks = document.querySelectorAll("[data-nav]");
@@ -116,7 +116,7 @@
   function setActiveNav(id){
     navLinks.forEach(function(a){
       var target = a.getAttribute("data-nav");
-      var isMatch = (target === id) || (target === "diensten" && DIENSTEN_IDS.indexOf(id) !== -1);
+      var isMatch = (target === id) || (target === "tarieven" && TARIEVEN_IDS.indexOf(id) !== -1);
       if(isMatch){ a.setAttribute("aria-current","page"); }
       else { a.removeAttribute("aria-current"); }
     });
