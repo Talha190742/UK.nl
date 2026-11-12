@@ -1,6 +1,6 @@
 (function(){
   "use strict";
-
+ 
   /* Let op: het "hidden"-attribuut wordt op SVG-elementen niet altijd
      betrouwbaar bijgewerkt via de .hidden-property (dat werkt wel voor
      gewone HTML-elementen, maar niet consistent voor <svg>). Daarom hier
@@ -10,14 +10,14 @@
     if(isHidden){ el.setAttribute("hidden", ""); }
     else { el.removeAttribute("hidden"); }
   }
-
+ 
   var menuToggle = document.getElementById("menuToggle");
   var mobilePanel = document.getElementById("mobilePanel");
   var mobilePanelClose = document.getElementById("mobilePanelClose");
   var mobilePanelBackdrop = document.getElementById("mobilePanelBackdrop");
   var iconMenu = document.getElementById("iconMenu");
   var iconClose = document.getElementById("iconClose");
-
+ 
   function closeMobileMenu(){
     if(!mobilePanel) return;
     mobilePanel.classList.remove("open");
@@ -27,7 +27,7 @@
     setSvgHidden(iconMenu, false);
     setSvgHidden(iconClose, true);
   }
-
+ 
   if(menuToggle){
     menuToggle.addEventListener("click", function(){
       var open = mobilePanel.classList.toggle("open");
@@ -47,7 +47,7 @@
   document.addEventListener("keydown", function(e){
     if(e.key === "Escape") closeMobileMenu();
   });
-
+ 
   /* ---------- Eigen smooth-scroll voor interne links (#...) ----------
      We animeren zelf met requestAnimationFrame in plaats van te vertrouwen
      op CSS scroll-behavior:smooth, omdat sommige besturingssystemen/browsers
@@ -56,11 +56,11 @@
   var HEADER_OFFSET = 84;
   var SCROLL_DURATION = 650;
   var scrollAnimToken = 0; /* zorgt dat een nieuwe klik een lopende scroll-animatie overneemt i.p.v. ermee te vechten */
-
+ 
   function easeInOutQuad(t){
     return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
   }
-
+ 
   function animateScrollTo(targetY, onDone){
     targetY = Math.max(0, Math.min(targetY, document.documentElement.scrollHeight - window.innerHeight));
     var startY = window.scrollY;
@@ -101,18 +101,18 @@
     }
     requestAnimationFrame(step);
   }
-
+ 
   var TARIEVEN_IDS = ["socialmedia","meta-ads","google-ads","seo-blogs"];
   var sections = ["diensten","waarom","socialmedia","meta-ads","google-ads","seo-blogs","combideal","contact"]
     .map(function(id){ return document.getElementById(id); }).filter(Boolean);
   var navLinks = document.querySelectorAll("[data-nav]");
-
+ 
   /* Terwijl we zelf programmatisch naar een sectie scrollen, negeren we de
      scroll-gebaseerde highlight (anders "sleept" de grijze balk even mee
      over de secties die onderweg gepasseerd worden, voordat hij op de
      aangeklikte lande). We zetten de juiste link meteen bij klik vast. */
   var suppressSpy = false;
-
+ 
   function setActiveNav(id){
     navLinks.forEach(function(a){
       var target = a.getAttribute("data-nav");
@@ -121,7 +121,7 @@
       else { a.removeAttribute("aria-current"); }
     });
   }
-
+ 
   function onScroll(){
     if(suppressSpy) return;
     var pos = window.scrollY + 110;
@@ -133,7 +133,7 @@
   }
   window.addEventListener("scroll", onScroll, {passive:true});
   onScroll();
-
+ 
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener("click", function(e){
       var hash = a.getAttribute("href");
@@ -183,10 +183,10 @@
       history.pushState(null, "", hash);
     });
   });
-
+ 
   var yearEl = document.getElementById("year");
   if(yearEl) yearEl.textContent = new Date().getFullYear();
-
+ 
   /* ---------- Contactformulier ---------- */
   var form = document.getElementById("contactForm");
   var successBox = document.getElementById("successBox");
@@ -194,7 +194,8 @@
   var submitBtn = document.getElementById("submitBtn");
   var formError = document.getElementById("formError");
   var CONTACT_EMAIL = "ummetkucuker@hotmail.com";
-
+  var WEB3FORMS_ACCESS_KEY = "3f1382f0-b456-4d57-8746-a67a8d7fdd4f";
+ 
   if(form){
     form.addEventListener("submit", function(e){
       e.preventDefault();
@@ -208,25 +209,25 @@
       var email = form.email.value.trim();
       var phone = form.phone.value.trim();
       var message = form.message.value.trim();
-
+ 
       if(formError) formError.hidden = true;
       if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = "Versturen…"; }
-
+ 
       var payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: "Nieuw bericht via website — " + name,
+        replyto: email,
         dienst: service,
         name: name,
         email: email,
         phone: phone || "(niet opgegeven)",
-        message: message,
-        _subject: "Nieuw bericht via website — " + name,
-        _template: "table",
-        _captcha: "false"
+        message: message
       };
-
+ 
       var controller = new AbortController();
       var timeoutId = setTimeout(function(){ controller.abort(); }, 15000);
-
-      fetch("https://formsubmit.co/ajax/" + CONTACT_EMAIL, {
+ 
+      fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(payload),
@@ -234,8 +235,10 @@
       })
         .then(function(res){
           clearTimeout(timeoutId);
-          if(!res.ok) throw new Error("network");
-          return res.json();
+          return res.json().then(function(data){
+            if(!res.ok || !data.success) throw new Error("network");
+            return data;
+          });
         })
         .then(function(){
           window.location.href = "bedankt.html";
@@ -257,7 +260,7 @@
     });
   }
 })();
-
+ 
 (function(){
   "use strict";
   /* De logo-marquee duplicate zijn chips exact 2x zodat de animatie naadloos
@@ -268,7 +271,7 @@
      zodat de animatie altijd exact op de juiste pixel eindigt. */
   var track = document.querySelector(".logo-marquee-track");
   if(!track) return;
-
+ 
   function applyShift(){
     var chips = track.querySelectorAll(".logo-chip");
     var half = Math.floor(chips.length / 2);
@@ -282,14 +285,14 @@
       track.style.setProperty("--marquee-shift", "-" + Math.round(shift) + "px");
     }
   }
-
+ 
   function scheduleApply(){
     /* Dubbele rAF zodat layout/afbeeldingen zeker geladen/berekend zijn. */
     requestAnimationFrame(function(){
       requestAnimationFrame(applyShift);
     });
   }
-
+ 
   var imgs = track.querySelectorAll("img");
   var pending = imgs.length;
   if(pending === 0){
@@ -309,13 +312,14 @@
     pending--;
     if(pending <= 0){ scheduleApply(); }
   }
-
+ 
   var resizeTimer;
   window.addEventListener("resize", function(){
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(applyShift, 200);
   });
-
+ 
   /* Val-back: sowieso na volledige page-load nog eenmaal herberekenen. */
   window.addEventListener("load", scheduleApply);
 })();
+ 
