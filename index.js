@@ -233,8 +233,7 @@
           return res.json();
         })
         .then(function(){
-          form.style.display = "none";
-          if(successBox) successBox.classList.add("show");
+          window.location.href = "bedankt.html";
         })
         .catch(function(){
           if(formError) formError.hidden = false;
